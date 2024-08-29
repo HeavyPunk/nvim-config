@@ -59,6 +59,16 @@ return {
     end,
   },
 
+  {
+    "tanvirtin/vgit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    config = function (_, opts)
+      require("vgit").setup()
+    end,
+  },
+
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
