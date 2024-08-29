@@ -8,6 +8,13 @@ local servers = { "html", "cssls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 local util = require "lspconfig/util"
 
+-- SET BREAKPOINT ICON --
+vim.fn.sign_define('DapBreakpoint', { text = '⦿', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '⧁', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapLogPoint', { text = 'L', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '➜', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointRejected', { text = '⦾', texthl = 'red', linehl = '', numhl = '' })
+
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
