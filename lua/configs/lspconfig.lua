@@ -8,13 +8,6 @@ local servers = { "html", "cssls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 local util = require "lspconfig/util"
 
--- SET BREAKPOINT ICON --
-vim.fn.sign_define('DapBreakpoint', { text = '⦿', texthl = 'red', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointCondition', { text = '⧁', texthl = 'red', linehl = '', numhl = '' })
-vim.fn.sign_define('DapLogPoint', { text = 'L', texthl = 'red', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '➜', texthl = 'red', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointRejected', { text = '⦾', texthl = 'red', linehl = '', numhl = '' })
-
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -37,6 +30,38 @@ lspconfig.rust_analyzer.setup({
       },
     },
   },
+})
+
+lspconfig.gopls.setup({
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "go", "golang" },
+  root_dir = util.root_pattern("go.mod"),
+  settings = {
+    ["gopls"] = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+})
+
+lspconfig.csharp_ls.setup({
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "cs" },
+  settings = {
+    ["csharp-language-server"] = {
+      cmd = "csharp-ls",
+      init_options = {
+        AutomaticWorkspaceInit = true
+      }
+    }
+  }
 })
 -- configuring single server, example: typescript
 -- lspconfig.tsserver.setup {

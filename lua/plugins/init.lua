@@ -21,7 +21,9 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "rust-analyzer"
+        "rust-analyzer",
+        "gopls",
+        "csharp-language-server"
       }
     }
   },
@@ -68,6 +70,30 @@ return {
       require("vgit").setup()
     end,
   },
+
+  {
+    "amitds1997/remote-nvim.nvim",
+    version = "*", -- Pin to GitHub releases
+    dependencies = {
+        "nvim-lua/plenary.nvim", -- For standard functions
+        "MunifTanjim/nui.nvim", -- To build the plugin UI
+        "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+    },
+    config = true,
+  },
+
+  {
+    "kwkarlwang/bufresize.nvim",
+    config = function(_, opts)
+      require("bufresize").setup({
+        resize = {
+          keys = {},
+          trigger_events = {"VimResized"},
+          increment = 5
+        }
+      })
+    end
+  }
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",

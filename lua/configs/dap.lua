@@ -24,3 +24,23 @@ dap.configurations.rust = {
   }
 }
 
+dap.configurations.go = {
+  {
+    name = "Launch",
+    type = "gdb",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtBeginningOfMainSubprogram = false
+  }
+}
+
+-- SET BREAKPOINT ICON --
+vim.fn.sign_define('DapBreakpoint', { text = '⦿', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '⧁', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapLogPoint', { text = 'L', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '➜', texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointRejected', { text = '⦾', texthl = 'red', linehl = '', numhl = '' })
+
