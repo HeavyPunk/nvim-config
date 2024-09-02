@@ -92,7 +92,8 @@ return {
           increment = 5
         }
       })
-    end
+    end,
+    lazy = false
   }
 
   -- {
