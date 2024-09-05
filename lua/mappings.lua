@@ -48,6 +48,9 @@ end, { desc = "Open remote" })
 map('n', '<Leader>rc', function()
   vim.cmd("RemoteStop")
 end, { desc = "Close remote" })
+map('n', '<Leader>to', function()
+  vim.cmd("Telescope")
+end, { desc = "Open telescope" })
 
 -- TREE --
 local nvim_tree_api = require("nvim-tree.api")
