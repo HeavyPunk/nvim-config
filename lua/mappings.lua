@@ -42,6 +42,12 @@ map('n', '<Leader>ds', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.scopes)
 end, { desc = "DAP: Centered float scopes" })
+map('n', '<Leader>rs', function()
+  vim.cmd("RemoteStart")
+end, { desc = "Open remote" })
+map('n', '<Leader>rc', function()
+  vim.cmd("RemoteStop")
+end, { desc = "Close remote" })
 
 -- TREE --
 local nvim_tree_api = require("nvim-tree.api")
