@@ -63,6 +63,23 @@ lspconfig.csharp_ls.setup({
     }
   }
 })
+
+lspconfig.clangd.setup({
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "c", "h", "cpp", "hpp" },
+  settings = {
+    ["clangd"] = {
+      cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+      init_options = {
+        fallback_flags = { "-std=c++17" }
+      }
+    }
+  }
+})
+
+
 -- configuring single server, example: typescript
 -- lspconfig.tsserver.setup {
 --   on_attach = nvlsp.on_attach,

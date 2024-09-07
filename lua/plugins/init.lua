@@ -23,7 +23,8 @@ return {
       ensure_installed = {
         "rust-analyzer",
         "gopls",
-        "csharp-language-server"
+        "csharp-language-server",
+        "clangd"
       }
     }
   },
@@ -106,7 +107,7 @@ return {
        "html", "css", "rust",
         "go", "c_sharp", "json",
         "yaml", "bash", "c", "python",
-        "java", "javascript"
+        "cpp", "java", "javascript"
   		},
       ignore_install = {},
       modules = {
