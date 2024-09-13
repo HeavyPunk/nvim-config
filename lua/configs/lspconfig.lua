@@ -79,6 +79,13 @@ lspconfig.clangd.setup({
   }
 })
 
+lspconfig.tsserver.setup({
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "ts", "tsx" }
+})
+
 
 -- configuring single server, example: typescript
 -- lspconfig.tsserver.setup {

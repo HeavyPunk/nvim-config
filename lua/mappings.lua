@@ -52,10 +52,24 @@ map('n', '<Leader>to', function()
   vim.cmd("Telescope")
 end, { desc = "Open telescope" })
 
--- TREE --
-local nvim_tree_api = require("nvim-tree.api")
-map("n", "<C-t>", function() nvim_tree_api.tree.toggle() end)
-----------
+map('n', '<Leader>sv', function()
+  vim.cmd("vsplit")
+end, { desc = "Vertical window split" })
+map('n', '<Leader>sh', function ()
+  vim.cmd("split")
+end, { desc = "Horizontal window split" })
+
+-- DIFF VIEW --
+
+map('n', '<Leader>dvo', function ()
+  vim.cmd("DiffviewOpen")
+end, { desc = "DiffView Open" })
+
+map('n', '<Leader>dvc', function ()
+  vim.cmd("DiffviewClose")
+end, { desc = "DiffviewClose" })
+
+---------------
 
 -- TERMINAL --
 vim.api.nvim_set_keymap("t", "<C-ESC>", "<C-\\><C-n>", { noremap = true })

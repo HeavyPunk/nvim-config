@@ -24,7 +24,9 @@ return {
         "rust-analyzer",
         "gopls",
         "csharp-language-server",
-        "clangd"
+        "clangd",
+        "typescript-language-server",
+        "netcoredbg"
       }
     }
   },
@@ -63,13 +65,11 @@ return {
   },
 
   {
-    "tanvirtin/vgit.nvim",
+    "sindrets/diffview.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim"
+      "nvim-tree/nvim-web-devicons"
     },
-    config = function (_, opts)
-      require("vgit").setup()
-    end,
+    lazy = false
   },
 
   {
@@ -107,7 +107,8 @@ return {
        "html", "css", "rust",
         "go", "c_sharp", "json",
         "yaml", "bash", "c", "python",
-        "cpp", "java", "javascript"
+        "cpp", "java", "javascript",
+        "dockerfile"
   		},
       ignore_install = {},
       modules = {
