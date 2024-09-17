@@ -49,19 +49,15 @@ lspconfig.gopls.setup({
   },
 })
 
-lspconfig.csharp_ls.setup({
+lspconfig.omnisharp.setup({
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   filetypes = { "cs" },
-  settings = {
-    ["csharp-language-server"] = {
-      cmd = "csharp-ls",
-      init_options = {
-        AutomaticWorkspaceInit = true
-      }
-    }
-  }
+  cmd = { "omnisharp" },
+  enable_import_completion = true,
+  organize_imports_on_format = true,
+  enable_roslyn_analyzers = true,
 })
 
 lspconfig.clangd.setup({
@@ -69,6 +65,7 @@ lspconfig.clangd.setup({
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   filetypes = { "c", "h", "cpp", "hpp" },
+  root_dir = function() return vim.fn.getcwd() end,
   settings = {
     ["clangd"] = {
       cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
@@ -83,7 +80,7 @@ lspconfig.tsserver.setup({
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
-  filetypes = { "ts", "tsx" }
+  filetypes = { "typescript", "typescriptreact" }
 })
 
 

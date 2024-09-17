@@ -23,7 +23,7 @@ return {
       ensure_installed = {
         "rust-analyzer",
         "gopls",
-        "csharp-language-server",
+        "omnisharp",
         "clangd",
         "typescript-language-server",
         "netcoredbg"
