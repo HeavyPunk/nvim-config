@@ -23,15 +23,13 @@ return {
       },
       select = {
         get_config = function (opts)
-          if opts.kind == "codeaction" then
-            return {
-              backend = "telescope",
-              telescope = {
-                relative = "cursor",
-                max_width = 40,
-              }
+          return {
+            backend = "telescope",
+            telescope = {
+              relative = "cursor",
+              max_width = 40,
             }
-          end
+          }
         end
       }
   },
