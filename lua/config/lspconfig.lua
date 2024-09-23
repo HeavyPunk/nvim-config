@@ -76,3 +76,19 @@ lspconfig.rust_analyzer.setup({
   }
 })
 
+lspconfig.clangd.setup({
+  on_attach = M.on_attach,
+  on_init = M.on_init,
+  capabilities = M.capabilities,
+  filetypes = {"c", "h", "cpp", "hpp"},
+  root_dir = function() return vim.fn.getcwd() end,
+  settings = {
+    ["clangd"] = {
+      cmd = {"clangd", "--background-index", "--clang-tidy", "--log=verbose"},
+      init_options = {
+        fallback_flags = {"-std=c++17"}
+      }
+    }
+  }
+})
+

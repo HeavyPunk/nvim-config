@@ -37,6 +37,9 @@ vim.o.undofile = true
 -- interval for writing swap file to disk, also used by gitsigns
 vim.o.updatetime = 250
 
+-- enable autoscroll --
+vim.o.scrolloff = 10
+
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append "<>[]hl"

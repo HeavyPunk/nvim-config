@@ -15,7 +15,10 @@ return {
 		ensure_installed = {
 			"rust-analyzer",
 			"lua-language-server",
-			"csharp-language-server"
+			"csharp-language-server",
+      "clangd",
+      "typescript-language-server",
+      "netcoredbg"
 		},
 	},
 	lazy = false,
