@@ -23,6 +23,27 @@ return {
             end)
           end,
         },
+        {
+          "n", "cp",
+          function ()
+            vim.ui.input({prompt = "Push commits: y/n"}, function (ans)
+              if not ans then return end
+              if ans == "y" or ans == "Y" then
+                local results = vim.system({"git", "push"}, {text = true}):wait()
+                if results.code ~= 0 then
+                  vim.notify(
+                    "Push failed with the message: \n"
+                      .. vim.trim(results.stdout .. "\n" .. results.stderr),
+                    vim.log.levels.ERROR,
+                    {title = "Push"}
+                  )
+                else
+                  vim.notify(results.stdout, vim.log.levels.INFO, {title = "Push"})
+                end
+              end
+            end)
+          end
+        },
       },
     }
   },

@@ -68,6 +68,9 @@ map("n", "<leader>tsf", function ()
 end, {desc = "Telescope: Find file"})
 
 -- GIT --
+map("n", "<leader>gl", function ()
+  require("gitgraph").draw({}, {all = true, max_count = 5000})
+end, {desc = "GitGraph - Draw"})
 map("n", "<leader>dvo", function ()
   vim.cmd("DiffviewOpen")
 end, {desc = "DiffView: Open"})
