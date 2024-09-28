@@ -82,5 +82,19 @@ map("n", "<leader>dvc", function ()
   vim.cmd("DiffviewClose")
 end, {desc = "DiffView: Close"})
 
+-- NEOTEST --
+map("n", "<leader>nts", function ()
+  require("neotest").summary.toggle()
+end, {desc = "NeoTest: Summary toggle"})
+map("n", "<leader>ntr", function ()
+  require("neotest").run.run()
+end, {desc = "NeoTest: Run nearest test"})
+map("n", "<leader>ntd", function ()
+  require("neotest").run.run({strategy = "dap"})
+end, {desc = "NeoTest: Debug nearest test"})
+map("n", "<leader>nta", function ()
+  require("neotest").run.attach()
+end, {desc = "NeoTest: Attach to nearest test"})
+
 
 

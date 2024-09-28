@@ -38,7 +38,7 @@ return {
                     {title = "Push"}
                   )
                 else
-                  vim.notify(results.stdout, vim.log.levels.INFO, {title = "Push"})
+                  vim.notify("Commits pushed succesfully", vim.log.levels.INFO, {title = "Push"})
                 end
               end
             end)
