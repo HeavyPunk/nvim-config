@@ -10,7 +10,8 @@ return {
         "c", "lua", "vim",
         "vimdoc", "javascript", "html",
         "rust", "c_sharp", "yaml",
-        "css", "go", "http", "bash"
+        "css", "go", "http", "bash",
+        "kotlin"
       },
       sync_install = false,
       highlight = { enable = true },

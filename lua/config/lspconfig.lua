@@ -92,3 +92,31 @@ lspconfig.clangd.setup({
   }
 })
 
+lspconfig.gopls.setup({
+  on_init = M.on_init,
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = {"go", "golang"},
+  root_dir = function() return vim.fn.getcwd() end,
+  settings = {
+    ["gopls"] = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+})
+
+lspconfig.kotlin_language_server.setup({
+  on_init = M.on_init,
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = {"kotlin"},
+  -- root_dir = function () return vim.fn.getcwd() end,
+  -- init_options = {
+  --  storagePath = vim.fn.resolve(vim.fn.stdpath("cache") .. "/kotlin_language_server")
+  --} -- https://github.com/neovim/nvim-lspconfig/issues/3239
+})
+

@@ -17,6 +17,15 @@ dap.adapters.coreclr = {
   args = {"--interpreter=vscode"}
 }
 
+dap.adapters.go = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = "dlv",
+    args = {"dap", "-l", "127.0.0.1:${port}", "--log", '--log-output="dap"'}
+  }
+}
+
 dap.configurations.rust = {
   {
     name = "Launch",
@@ -58,11 +67,11 @@ dap.configurations.cpp = {
 
 dap.configurations.go = {
   {
-    name = "Launch",
-    type = "gdb",
+    name = "Debug via delve",
+    type = "go",
     request = "launch",
     program = function()
-      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+      return vim.fn.input("Path to main.go: ", vim.fn.getcwd() .. "/", "file")
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false

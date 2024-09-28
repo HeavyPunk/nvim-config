@@ -18,7 +18,9 @@ return {
 			"csharp-language-server",
       "clangd",
       "typescript-language-server",
-      "netcoredbg"
+      "netcoredbg",
+      "gopls",
+      "kotlin-language-server"
 		},
 	},
 	lazy = false,

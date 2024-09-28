@@ -47,10 +47,10 @@ end, { desc = "Neotree: focus window"})
 
 -- EDITOR --
 map('n', '<Leader>sv', function()
-  vim.cmd("vsplit")
+  vim.cmd.split({mods = {vertical = true}})
 end, { desc = "Vertical window split" })
 map('n', '<Leader>sh', function ()
-  vim.cmd("split")
+  vim.cmd.split()
 end, { desc = "Horizontal window split" })
 
 -- TERMINAL --
@@ -60,11 +60,15 @@ vim.api.nvim_set_keymap("t", "<C-ESC>", "<C-\\><C-n>", { noremap = true })
 -- TELESCOPE --
 map("n", "<leader>tsl", function ()
   require("telescope.builtin").live_grep({
+    cwd = vim.fn.getcwd(),
     prompt_title = "find string in files..."
   })
 end, {desc = "Telescope: Live grep"})
 map("n", "<leader>tsf", function ()
-  require("telescope.builtin").find_files({})
+  require("telescope.builtin").find_files({
+    hidden = true,
+    cwd = vim.fn.getcwd()
+  })
 end, {desc = "Telescope: Find file"})
 
 -- GIT --
