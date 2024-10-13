@@ -6,12 +6,17 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     -- Adapters --
-    {"fredrikaverpil/neotest-golang", version = "*"}
+    {"fredrikaverpil/neotest-golang", version = "*"},
+    "rouge8/neotest-rust"
   },
   config = function ()
     require("neotest").setup({
       adapters = {
-         require("neotest-golang"),
+        require("neotest-golang"),
+        require("neotest-rust") {
+          args = {"--no-capture"},
+          dap_adapter = "gdb"
+        },
       }
     })
   end,

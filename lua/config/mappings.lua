@@ -39,6 +39,8 @@ map("n", "gD", vim.lsp.buf.declaration, {desc = "LSP: Go to declaration"})
 map("n", "gi", vim.lsp.buf.implementation, {desc = "LSP: Go to implementation"})
 map("n", "gr", require("telescope.builtin").lsp_references, {desc = "LSP: Show references"})
 map("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "LSP: Code actions"})
+map("n", "<leader>cr", vim.lsp.buf.rename, {desc = "LSP: Rename"})
+map("n", "<leader>ch", vim.lsp.buf.hover, {desc = "LSP: Show signature"})
 
 -- NEOTREE --
 map("n", "<leader>e", function()
@@ -46,12 +48,12 @@ map("n", "<leader>e", function()
 end, { desc = "Neotree: focus window"})
 
 -- EDITOR --
-map('n', '<Leader>sv', function()
-  vim.cmd.split({mods = {vertical = true}})
-end, { desc = "Vertical window split" })
-map('n', '<Leader>sh', function ()
-  vim.cmd.split()
-end, { desc = "Horizontal window split" })
+map('n', '<Leader>sv', function() vim.cmd.split({mods = {vertical = true}}) end, { desc = "Vertical window split" })
+map('n', '<Leader>sh', function () vim.cmd.split() end, { desc = "Horizontal window split" })
+map('n', '<leader>w', function ()
+  local win_id = require("window-picker").pick_window()
+  if win_id ~= nil then vim.api.nvim_set_current_win(win_id) end
+end, {desc = "Goto window"})
 
 -- TERMINAL --
 map("n", "<leader>h", function() vim.cmd("ToggleTerm") end, {desc = "Terminal: Toggle terminal"})
@@ -90,11 +92,16 @@ map("n", "<leader>ntr", function ()
   require("neotest").run.run()
 end, {desc = "NeoTest: Run nearest test"})
 map("n", "<leader>ntd", function ()
-  require("neotest").run.run({strategy = "dap"})
+  require("neotest").run.run({suite = false, strategy = "dap"})
+	require("dapui").open()
+	require("nvim-tree.api").tree.close()
 end, {desc = "NeoTest: Debug nearest test"})
 map("n", "<leader>nta", function ()
   require("neotest").run.attach()
 end, {desc = "NeoTest: Attach to nearest test"})
+map("n", "<leader>nto", function ()
+  require("neotest").output.open()
+end, {desc = "NeoTest: Open test output"})
 
 
 

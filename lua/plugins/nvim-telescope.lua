@@ -5,6 +5,7 @@ local M = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
+      "Decodetalkers/csharpls-extended-lsp.nvim"
     },
     opts = {
       pickers = {
@@ -16,6 +17,7 @@ local M = {
     config = function ()
       local tel = require("telescope")
       tel.load_extension("ui-select")
+      tel.load_extension("csharpls_definition")
     end
   },
 

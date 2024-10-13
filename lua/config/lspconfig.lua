@@ -59,6 +59,10 @@ lspconfig.csharp_ls.setup({
   on_init = M.on_init,
   on_attach = M.on_attach,
   capabilities = M.capabilities,
+  handlers = {
+    ["textDocument/definition"] = require('csharpls_extended').handler,
+    ["textDocument/typeDefinition"] = require('csharpls_extended').handler,
+  },
   filetypes = {"cs"},
   cmd = {"csharp-ls"},
   init_options = {
@@ -118,5 +122,13 @@ lspconfig.kotlin_language_server.setup({
   -- init_options = {
   --  storagePath = vim.fn.resolve(vim.fn.stdpath("cache") .. "/kotlin_language_server")
   --} -- https://github.com/neovim/nvim-lspconfig/issues/3239
+})
+
+lspconfig.ts_ls.setup({
+  on_init = M.on_init,
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = {"typescript", "typescriptreact"},
+  root_dir = function() return vim.fn.getcwd() end
 })
 

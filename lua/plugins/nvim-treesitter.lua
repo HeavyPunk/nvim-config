@@ -11,7 +11,7 @@ return {
         "vimdoc", "javascript", "html",
         "rust", "c_sharp", "yaml",
         "css", "go", "http", "bash",
-        "kotlin"
+        "kotlin", "http"
       },
       sync_install = false,
       highlight = { enable = true },

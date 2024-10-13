@@ -2,6 +2,9 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    dependencies = {
+      "bradcush/nvim-base16"
+    },
     opts = {
       flavour = "auto", -- latte, frappe, macchiato, mocha
     background = { -- :h background

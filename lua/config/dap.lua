@@ -86,6 +86,13 @@ dap.configurations.cs = {
     program = function()
       return vim.fn.input("Path to dll", vim.fn.getcwd() .. "bin/Debug", "file")
     end,
+  },
+  {
+    type = "coreclr",
+    name = "Attach - netcoredbg",
+    request = "attach",
+    mode = "local",
+    processId = require("dap.utils").pick_process
   }
 }
 
