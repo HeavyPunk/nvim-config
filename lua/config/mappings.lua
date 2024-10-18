@@ -103,5 +103,16 @@ map("n", "<leader>nto", function ()
   require("neotest").output.open()
 end, {desc = "NeoTest: Open test output"})
 
+-- TABS --
+map("n", "<tab>", function ()
+  vim.cmd("BufferNext")
+end, {desc = "Tabs: Next tab"})
+map("n", "<S-tab>", function ()
+  vim.cmd("BufferPrevious")
+end, {desc = "Tabs: Prev tab"})
+map("n", "<leader>x", function ()
+  vim.cmd("BufferClose")
+end, {desc = "Tabs: Close tab"})
+
 
 
