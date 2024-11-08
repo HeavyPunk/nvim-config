@@ -20,7 +20,8 @@ return {
       "typescript-language-server",
       "netcoredbg",
       "gopls",
-      "kotlin-language-server"
+      "kotlin-language-server",
+      "bash-debug-adapter"
 		},
 	},
 	lazy = false,

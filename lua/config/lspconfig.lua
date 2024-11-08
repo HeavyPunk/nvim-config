@@ -128,7 +128,7 @@ lspconfig.ts_ls.setup({
   on_init = M.on_init,
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = {"typescript", "typescriptreact"},
+  filetypes = {"typescript", "typescriptreact", "javascript", "javascriptreact"},
   root_dir = function() return vim.fn.getcwd() end
 })
 
