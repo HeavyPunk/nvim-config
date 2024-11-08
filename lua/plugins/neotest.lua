@@ -6,10 +6,7 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     -- Adapters --
-    {
-      dir = "~/Projects/neovim/neotest-golang",
-      dev = true,
-    },
+    {"HeavyPunk/neotest-golang", version = "*" },
     "rouge8/neotest-rust"
   },
   config = function ()
