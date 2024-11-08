@@ -5,6 +5,11 @@ dap.defaults.fallback.external_terminal = {
 }
 dap.defaults.fallback.force_external_terminal = true
 
+dap.adapters.sh = {
+  type = "executable",
+  command = "bash-debug-adapter"
+}
+
 dap.adapters.gdb = {
   type = "executable",
   command = "gdb",
@@ -23,6 +28,22 @@ dap.adapters.go = {
   executable = {
     command = "dlv",
     args = {"dap", "-l", "127.0.0.1:${port}", "--log", '--log-output="dap"'}
+  }
+}
+
+dap.configurations.sh = {
+  {
+    name = "Launch",
+    type = "sh",
+    request = "launch",
+    program = "${file}",
+    cwd = "${fileDirname}",
+    pathBash = "bash",
+    pathCat = "cat",
+    pathMkfifo = "mkfifo",
+    pathPkill = "pkill",
+    env = {},
+    args = {}
   }
 }
 
@@ -74,7 +95,7 @@ dap.configurations.go = {
       return vim.fn.input("Path to main.go: ", vim.fn.getcwd() .. "/", "file")
     end,
     cwd = "${workspaceFolder}",
-    stopAtBeginningOfMainSubprogram = false
+    stopAtBeginningOfMainSubprogram = false,
   }
 }
 
