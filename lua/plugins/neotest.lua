@@ -6,15 +6,15 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     -- Adapters --
-    {"HeavyPunk/neotest-golang", version = "*" },
+    "fredrikaverpil/neotest-golang",
     "rouge8/neotest-rust"
   },
   config = function ()
     require("neotest").setup({
       adapters = {
         require("neotest-golang") {
-          dap_manual_enabled = true,
-          dap_manual_configuration = {
+          dap_mode = "manual",
+          dap_manual_config = {
             name = "Debug go tests",
             type = "go",
             request = "launch",
