@@ -7,10 +7,9 @@ map("n", "<F5>", function()
 	require("nvim-tree.api").tree.close()
 end, { desc = "DAP: Select config" })
 map("n", "<F17>", function() -- <S-F5> https://github.com/neovim/neovim/issues/7384#issuecomment-504996618
-	require("dap").terminate({}, {terminateDebuggee = true}, function()
-		require("dapui").close()
-		require("nvim-tree.api").tree.toggle({focus = false})
-	end)
+	require("dap").terminate({}, {terminateDebuggee = true})
+	require("dapui").close()
+	require("nvim-tree.api").tree.toggle({focus = false})
 end, { desc = "DAP: Stop session" })
 
 map('n', '<F10>', function() require("dap").step_over() end, { desc = "DAP: Step over" })
