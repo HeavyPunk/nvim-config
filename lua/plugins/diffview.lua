@@ -29,6 +29,7 @@ return {
             vim.ui.input({prompt = "Push commits: y/n"}, function (ans)
               if not ans then return end
               if ans == "y" or ans == "Y" then
+                vim.notify("Pushhhhh...", vim.log.levels.INFO, {title = "Push"})
                 local results = vim.system({"git", "push"}, {text = true}):wait()
                 if results.code ~= 0 then
                   vim.notify(

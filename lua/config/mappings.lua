@@ -33,9 +33,9 @@ map('n', '<Leader>df', function()
 end, { desc = "DAP: Centered float frames" })
 
 -- LSP --
-map("n", "gd", vim.lsp.buf.definition, {desc = "LSP: Go to definition"})
-map("n", "gD", vim.lsp.buf.declaration, {desc = "LSP: Go to declaration"})
-map("n", "gi", vim.lsp.buf.implementation, {desc = "LSP: Go to implementation"})
+map("n", "gd", require("telescope.builtin").lsp_definitions, {desc = "LSP: Go to definition"})
+map("n", "gD", require("telescope.builtin").lsp_type_definitions, {desc = "LSP: Go to declaration"})
+map("n", "gi", require("telescope.builtin").lsp_implementations, {desc = "LSP: Go to implementation"})
 map("n", "gr", require("telescope.builtin").lsp_references, {desc = "LSP: Show references"})
 map("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "LSP: Code actions"})
 map("n", "<leader>cr", vim.lsp.buf.rename, {desc = "LSP: Rename"})
