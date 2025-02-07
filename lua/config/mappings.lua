@@ -43,8 +43,11 @@ map("n", "<leader>ch", vim.lsp.buf.hover, {desc = "LSP: Show signature"})
 
 -- NEOTREE --
 map("n", "<leader>e", function()
-	require("nvim-tree.api").tree.open()
+	require("nvim-tree.api").tree.open({ find_file = true })
 end, { desc = "Neotree: focus window"})
+map("n", "<leader>q", function()
+  require("nvim-tree.api").tree.close()
+end, { desc = "Neotree: close window" })
 
 -- EDITOR --
 map('n', '<Leader>sv', function() vim.cmd.split({mods = {vertical = true}}) end, { desc = "Vertical window split" })
