@@ -6,5 +6,9 @@ return {
        "MunifTanjim/nui.nvim", -- To build the plugin UI
        "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
    },
-   config = true,
+   config = {
+    devpod = {
+      search_style = "recurse_up"
+    }
+  },
 }
