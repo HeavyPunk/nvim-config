@@ -1,5 +1,7 @@
 ## Requirements
 - Neovim ^0.10
+- curl
+- gcc (for native pkg compilation)
 ### C# dev:
 - Dotnet SDK 8
 ### JS/TS dev:
