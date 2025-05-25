@@ -1,5 +1,5 @@
 ## Requirements
-- Neovim ^0.10
+- Neovim ^0.11
 - curl
 - gcc (for native pkg compilation)
 ### C# dev:
