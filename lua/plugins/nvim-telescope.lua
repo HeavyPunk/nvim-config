@@ -7,15 +7,18 @@ local M = {
       "nvim-telescope/telescope-ui-select.nvim",
       "Decodetalkers/csharpls-extended-lsp.nvim"
     },
-    opts = {
-      pickers = {
-        live_grep = {
-          additional_args = {"--hidden"}
-        }
-      }
-    },
     config = function ()
       local tel = require("telescope")
+      tel.setup({
+        pickers = {
+          live_grep = {
+            additional_args = {"--hidden"}
+          }
+        },
+        defaults = {
+          border = false -- TTL: while unmerged https://github.com/nvim-lua/plenary.nvim/pull/649
+        },
+      })
       tel.load_extension("ui-select")
       tel.load_extension("csharpls_definition")
     end

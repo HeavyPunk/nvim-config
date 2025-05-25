@@ -40,6 +40,9 @@ vim.o.updatetime = 250
 -- enable autoscroll --
 vim.o.scrolloff = 10
 
+-- floating window setup --
+vim.o.winborder = "rounded"
+
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append "<>[]hl"
