@@ -40,6 +40,7 @@ map("n", "gr", require("telescope.builtin").lsp_references, {desc = "LSP: Show r
 map("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "LSP: Code actions"})
 map("n", "<leader>cr", vim.lsp.buf.rename, {desc = "LSP: Rename"})
 map("n", "<leader>ch", vim.lsp.buf.hover, {desc = "LSP: Show signature"})
+map("n", "<leader>cd", require("telescope.builtin").diagnostics, {desc = "LSP: Show project diagnostics"})
 
 -- NEOTREE --
 map("n", "<leader>e", function()
