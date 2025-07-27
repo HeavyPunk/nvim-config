@@ -5,7 +5,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline"
+		"hrsh7th/cmp-cmdline",
 	},
 	config = function()
 		require("cmp").setup({
@@ -19,9 +19,14 @@ return {
 				documentation = require("cmp").config.window.bordered()
 			},
 			sources = require("cmp").config.sources({
+        -- {name = "minuet", group_index = 1, priority = 100,},
 				{name = "nvim_lsp"},
-				{name = "buffer"}
+				{name = "buffer"},
 			}),
+
+      performance = {
+        fetching_timeout = 2000,
+      },
 
 			mapping = {
 				["<Tab>"] = require("cmp").mapping(function(fallback)
@@ -35,6 +40,7 @@ return {
 					else
 					  fallback()
 					end
+
 				end, { "i", "s" }),
 				["<S-Tab>"] = require("cmp").mapping(function(fallback)
 					local cmp = require("cmp")

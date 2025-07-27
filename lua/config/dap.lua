@@ -1,7 +1,7 @@
 local dap = require("dap")
 dap.defaults.fallback.external_terminal = {
-  command = "$TERM",
-  args = {"-e"}
+  command = "$EXTERN_TERM",
+  args = {"--hold", "-e"}
 }
 dap.defaults.fallback.force_external_terminal = true
 
@@ -57,7 +57,19 @@ dap.configurations.rust = {
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false
-  }
+  },
+  {
+    name = "Attach",
+    type = "gdb",
+    request = "attach",
+    pid = function()
+      return require("dap.utils").pick_process()
+    end,
+    program = function ()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = "${workspaceFolder}"
+  },
 }
 
 dap.configurations.c = {

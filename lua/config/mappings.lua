@@ -117,6 +117,14 @@ map("n", "<leader>x", function ()
   vim.cmd("BufferClose")
 end, {desc = "Tabs: Close tab"})
 
+-- LLM --
+map({"n", "v"}, "<leader>cpa", function ()
+  vim.cmd("CodeCompanionActions")
+end, {desc = "Code companion actions"})
+map({"n", "v"}, "<leader>cpp", function ()
+  vim.cmd("CodeCompanion")
+end, {desc = "Code companion prompt"})
+
 -- RU Language Support --
 
 local function escape(str)

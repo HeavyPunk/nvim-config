@@ -8,9 +8,9 @@ return {
   },
   config = function ()
     local opts = {
-      devpod = {
-        search_style = "recurse_up"
-      }
+      -- devpod = {
+      --   search_style = "recurse_up"
+      -- }
     }
     require("remote-nvim").setup(opts)
   end
