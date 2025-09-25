@@ -3,6 +3,7 @@ return {
   dependencies = {
     { "nvim-lua/plenary.nvim", branch = "master" },
     "nvim-treesitter/nvim-treesitter",
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
     -- {
     --   "milanglacier/minuet-ai.nvim",
     --   dependencies = {
@@ -86,26 +87,12 @@ return {
     },
     strategies = {
       chat = {
-        opts = {
-          completion_provider = "cmp",
-        },
-        roles = {
-          ---@type string|fun(adapter: CodeCompanion.Adapter): string
-          llm = function (adapter)
-            return "KonturLLM (" .. adapter.formatted_name .. ")"
-          end,
-          user = "Me",
-        },
-        adapter = {
-          name = "kontur_llm",
-          model = "claude_opus_4",
-        },
+        adapter = "copilot",
+        model = "claude-sonnet-4-20250514"
       },
       inline = {
-        adapter = {
-          name = "kontur_llm",
-          model = "gpt4_o_mini",
-        },
+        adapter = "copilot",
+        model = "claude-sonnet-4-20250514",
         keymaps = {
           accept_change = {
             modes = { n = "ct" },
@@ -118,11 +105,52 @@ return {
         }
       },
       agent = {
-        adapter = {
-          name = "kontur_llm",
-          model = "gpt4_o_mini",
-        }
-      }
+        adapter = "copilot",
+        model = "claude-sonnet-4-20250514"
+      },
+      cmd = {
+        adapter = "copilot",
+        model = "claude-sonnet-4-20250514"
+      },
+
+      -- chat = {
+      --   opts = {
+      --     completion_provider = "cmp",
+      --   },
+      --   roles = {
+      --     ---@type string|fun(adapter: CodeCompanion.Adapter): string
+      --     llm = function (adapter)
+      --       return "KonturLLM (" .. adapter.formatted_name .. ")"
+      --     end,
+      --     user = "Me",
+      --   },
+      --   adapter = {
+      --     name = "kontur_llm",
+      --     model = "claude_opus_4",
+      --   },
+      -- },
+      -- inline = {
+      --   adapter = {
+      --     name = "kontur_llm",
+      --     model = "gpt4_o_mini",
+      --   },
+      --   keymaps = {
+      --     accept_change = {
+      --       modes = { n = "ct" },
+      --       description = "Accept the suggested change",
+      --     },
+      --     reject_change = {
+      --       modes = { n = "co" },
+      --       description = "Reject the suggested change",
+      --     }
+      --   }
+      -- },
+      -- agent = {
+      --   adapter = {
+      --     name = "kontur_llm",
+      --     model = "gpt4_o_mini",
+      --   }
+      -- }
     },
   }
 }
