@@ -23,7 +23,7 @@ return {
         },
         require("neotest-rust") {
           args = {"--no-capture"},
-          dap_adapter = "gdb"
+          dap_adapter = "codelldb"
         },
       }
     })

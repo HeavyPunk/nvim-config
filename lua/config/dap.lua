@@ -1,7 +1,7 @@
 local dap = require("dap")
 dap.defaults.fallback.external_terminal = {
-  command = "$EXTERN_TERM",
-  args = {"--hold", "-e"}
+  command = "alacritty",
+  args = {"-e"}
 }
 dap.defaults.fallback.force_external_terminal = true
 
@@ -14,6 +14,15 @@ dap.adapters.gdb = {
   type = "executable",
   command = "gdb",
   args = {"--interpreter=dap", "--eval-command", "set print pretty on"}
+}
+
+dap.adapters.codelldb = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = "codelldb",
+    args = {"--port", "${port}"},
+  },
 }
 
 dap.adapters.coreclr = {
@@ -50,7 +59,8 @@ dap.configurations.sh = {
 dap.configurations.rust = {
   {
     name = "Launch",
-    type = "gdb",
+    -- type = "gdb",
+    type = "codelldb",
     request = "launch",
     program = function ()
       return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
@@ -60,7 +70,8 @@ dap.configurations.rust = {
   },
   {
     name = "Attach",
-    type = "gdb",
+    -- type = "gdb",
+    type = "codelldb",
     request = "attach",
     pid = function()
       return require("dap.utils").pick_process()
