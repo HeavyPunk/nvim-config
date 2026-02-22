@@ -23,7 +23,7 @@ vim.g.maplocalleader = "\\"
 
 -- Load environment from .evn.json file in config directory
 local env_file = vim.fn.stdpath("config") .. "/" .. ".env.json"
-  if vim.fn.filereadable(env_file) then
+if vim.fn.filereadable(env_file) == 1 then
   local json_string = table.concat(vim.fn.readfile(env_file))
   local env_json = vim.json.decode(json_string)
   for name, value in pairs(env_json) do

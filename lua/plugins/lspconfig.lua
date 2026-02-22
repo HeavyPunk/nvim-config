@@ -1,9 +1,9 @@
-return {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    "Decodetalkers/csharpls-extended-lsp.nvim"
-  }
-}
+return {}
+-- return {
+--   "neovim/nvim-lspconfig",
+--   dependencies = {
+--   }
+-- }
 
 
 
