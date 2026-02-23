@@ -31,6 +31,8 @@ if vim.fn.filereadable(env_file) == 1 then
   end
 end
 
+require("config.common")
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -45,7 +47,8 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-require("config.common")
+require("config.preload")
+
 require("config.lspconfig")
 require("config.mappings")
 
