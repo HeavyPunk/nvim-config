@@ -1,7 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
-		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -13,10 +12,6 @@ return {
 				expand = function(args)
 					vim.snippet.expand(args.body)
 				end
-			},
-			window = {
-				completion = require("cmp").config.window.bordered(),
-				documentation = require("cmp").config.window.bordered()
 			},
 			sources = require("cmp").config.sources({
         -- {name = "minuet", group_index = 1, priority = 100,},
