@@ -27,7 +27,10 @@ if vim.fn.filereadable(env_file) == 1 then
   local json_string = table.concat(vim.fn.readfile(env_file))
   local env_json = vim.json.decode(json_string)
   for name, value in pairs(env_json) do
-    vim.env[name] = value
+    -- Should ignore variables which starts with `#` symbol
+    if string.sub(name, 1, 1) ~= "#" then
+      vim.env[name] = value
+    end
   end
 end
 
