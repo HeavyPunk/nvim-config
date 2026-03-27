@@ -1,4 +1,5 @@
 return {
+  -- TODO: move to original after fix 
   "ravitemer/mcphub.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
