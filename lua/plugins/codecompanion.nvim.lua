@@ -14,6 +14,22 @@ return {
     -- }
   },
   opts = {
+    adapters = {
+      acp = {
+        codex = function()
+          return require("codecompanion.adapters").extend("codex", {
+            defaults = {
+              -- auth_method = "openai-api-key", -- "openai-api-key"|"codex-api-key"|"chatgpt"
+              auth_method = "chatgpt", -- "openai-api-key"|"codex-api-key"|"chatgpt"
+              mcpServers = "inherit_from_config",
+            },
+            -- env = {
+            --   OPENAI_API_KEY = "my-api-key",
+            -- },
+          })
+        end,
+      },
+    },
     extensions = {
       mcphub = {
         callback = "mcphub.extensions.codecompanion",
@@ -93,12 +109,16 @@ We'll repeat this cycle until the tests pass. Ensure no deviations from these st
     },
     strategies = {
       chat = {
-        adapter = "copilot",
-        model = "claude-sonnet-4-20250514"
+        adapter = "codex",
+        model = "gpt-5.4",
+        -- adapter = "copilot",
+        -- model = "claude-sonnet-4-20250514"
       },
       inline = {
-        adapter = "copilot",
-        model = "claude-sonnet-4-20250514",
+        -- adapter = "copilot",
+        -- model = "claude-sonnet-4-20250514",
+        adapter = "codex",
+        model = "gpt-5.4",
         keymaps = {
           accept_change = {
             modes = { n = "ct" },
@@ -122,8 +142,10 @@ We'll repeat this cycle until the tests pass. Ensure no deviations from these st
     interactions = {
       chat = {
         adapter = {
-          name = "copilot",
-          model = "claude-sonnet-4-20250514"
+          -- name = "copilot",
+          -- model = "claude-sonnet-4-20250514"
+          adapter = "codex",
+          model = "gpt-5.4",
         }
       }
     }
