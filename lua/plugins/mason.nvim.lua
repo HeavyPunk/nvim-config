@@ -12,6 +12,9 @@ return {
 				package_uninstalled = "✘",
 			},
 		},
+    registries = {
+      "github:mason-org/mason-registry"
+    },
 		ensure_installed = {
 			-- "rust-analyzer",
 			"lua-language-server",

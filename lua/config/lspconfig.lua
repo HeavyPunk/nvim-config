@@ -1,6 +1,6 @@
 local M = {}
 
-vim.lsp.set_log_level("warn")
+vim.lsp.log.set_level("warn")
 
 vim.diagnostic.config({
   virtual_lines = {
@@ -23,47 +23,47 @@ vim.diagnostic.config({
   },
 })
 
-M.on_init = function(client, _)
-  if client:supports_method "textDocument/semanticTokens" then
-    client.server_capabilities.semanticTokensProvider = nil
-  end
-end
+-- M.on_init = function(client, _)
+--   if client:supports_method "textDocument/semanticTokens" then
+--     client.server_capabilities.semanticTokensProvider = nil
+--   end
+-- end
+--
+-- M.on_attach = function(_, bufnr)
+-- end
+--
+-- M.capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp-nvim-lsp')
+-- if has_cmp_nvim_lsp then
+--   M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+-- end
 
-M.on_attach = function(_, bufnr)
-end
-
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp-nvim-lsp')
-if has_cmp_nvim_lsp then
-  M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
-end
-
-M.capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = { valueSet = { 1 } },
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  },
-}
+-- M.capabilities.textDocument.completion.completionItem = {
+--   documentationFormat = { "markdown", "plaintext" },
+--   snippetSupport = true,
+--   preselectSupport = true,
+--   insertReplaceSupport = true,
+--   labelDetailsSupport = true,
+--   deprecatedSupport = true,
+--   commitCharactersSupport = true,
+--   tagSupport = { valueSet = { 1 } },
+--   resolveSupport = {
+--     properties = {
+--       "documentation",
+--       "detail",
+--       "additionalTextEdits",
+--     },
+--   },
+-- }
 
 vim.lsp.config("*", {
   root_markers = {".git"},
 })
 
 vim.lsp.config("lua_ls", {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-  on_init = M.on_init,
+  -- on_attach = M.on_attach,
+  -- capabilities = M.capabilities,
+  -- on_init = M.on_init,
   filetypes = {"lua"},
   cmd = {'lua-language-server'},
   settings = {
@@ -88,9 +88,9 @@ vim.lsp.config("lua_ls", {
 vim.lsp.enable("lua_ls", vim.fn.executable('lua-language-server') == 1)
 
 vim.lsp.config("gopls", {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-  on_init = M.on_init,
+  -- on_attach = M.on_attach,
+  -- capabilities = M.capabilities,
+  -- on_init = M.on_init,
   cmd = {"gopls"},
   filetypes = {"go", "golang"},
   settings = {
@@ -106,25 +106,26 @@ vim.lsp.config("gopls", {
 vim.lsp.enable("gopls", vim.fn.executable('gopls') == 1)
 
 vim.lsp.config("rust_analyzer", {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-  on_init = M.on_init,
+  -- on_attach = M.on_attach,
+  -- capabilities = M.capabilities,
+  -- on_init = M.on_init,
   cmd = {"rust-analyzer"},
   filetypes = { 'rust' },
   settings = {
     ["rust-analyzer"] = {
       cargo = {
         allFeatures = true
-      }
+      },
+      checkOnSave = true
     }
   }
 })
 vim.lsp.enable("rust_analyzer", vim.fn.executable('rust-analyzer') == 1)
 
 vim.lsp.config("csharp_ls", {
-  on_init = M.on_init,
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
+  -- on_init = M.on_init,
+  -- on_attach = M.on_attach,
+  -- capabilities = M.capabilities,
   filetypes = {"cs"},
   cmd = {"csharp-ls"},
   init_options = {
@@ -134,9 +135,9 @@ vim.lsp.config("csharp_ls", {
 vim.lsp.enable("csharp_ls", vim.fn.executable('csharp-ls') == 1)
 
 vim.lsp.config("clangd", {
-  on_attach = M.on_attach,
-  on_init = M.on_init,
-  capabilities = M.capabilities,
+  -- on_attach = M.on_attach,
+  -- on_init = M.on_init,
+  -- capabilities = M.capabilities,
   filetypes = {"c", "h", "cpp", "hpp"},
   settings = {
     ["clangd"] = {
@@ -150,9 +151,9 @@ vim.lsp.config("clangd", {
 vim.lsp.enable("clangd", vim.fn.executable('clangd') == 1)
 
 vim.lsp.config("ts_ls", {
-  on_init = M.on_init,
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
+  -- on_init = M.on_init,
+  -- on_attach = M.on_attach,
+  -- capabilities = M.capabilities,
   filetypes = {"typescript", "typescriptreact", "javascript", "javascriptreact"},
   cmd = {"typescript-language-server"}
 })

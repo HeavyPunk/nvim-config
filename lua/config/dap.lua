@@ -19,6 +19,7 @@ dap.adapters.gdb = {
 dap.adapters.codelldb = {
   type = "server",
   port = "${port}",
+  sourceLanguages = { "rust" },
   executable = {
     command = "codelldb",
     args = {"--port", "${port}"},
