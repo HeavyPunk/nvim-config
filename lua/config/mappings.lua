@@ -86,6 +86,9 @@ end, {desc = "DiffView: Open"})
 map("n", "<leader>dvc", function ()
   vim.cmd("DiffviewClose")
 end, {desc = "DiffView: Close"})
+map("n", "<leader>dvh", function ()
+  vim.cmd("DiffviewFileHistory %")
+end, {desc = "DiffView: History of current file"})
 
 -- NEOTEST --
 map("n", "<leader>nts", function ()
