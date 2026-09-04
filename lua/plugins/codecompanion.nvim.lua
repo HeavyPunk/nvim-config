@@ -20,7 +20,7 @@ return {
           return require("codecompanion.adapters").extend("codex", {
             defaults = {
               -- auth_method = "openai-api-key", -- "openai-api-key"|"codex-api-key"|"chatgpt"
-              auth_method = "chatgpt", -- "openai-api-key"|"codex-api-key"|"chatgpt"
+              auth_method = "chat-gpt", -- "openai-api-key"|"codex-api-key"|"chatgpt"
               mcpServers = "inherit_from_config",
             },
             -- env = {
@@ -107,45 +107,13 @@ We'll repeat this cycle until the tests pass. Ensure no deviations from these st
         provider = "default", -- default|mini_diff
       },
     },
-    strategies = {
-      chat = {
-        adapter = "codex",
-        model = "gpt-5.4",
-        -- adapter = "copilot",
-        -- model = "claude-sonnet-4-20250514"
-      },
-      inline = {
-        -- adapter = "copilot",
-        -- model = "claude-sonnet-4-20250514",
-        adapter = "codex",
-        model = "gpt-5.4",
-        keymaps = {
-          accept_change = {
-            modes = { n = "ct" },
-            description = "Accept the suggested change",
-          },
-          reject_change = {
-            modes = { n = "co" },
-            description = "Reject the suggested change",
-          }
-        }
-      },
-      agent = {
-        adapter = "copilot",
-        model = "claude-sonnet-4-20250514"
-      },
-      cmd = {
-        adapter = "copilot",
-        model = "claude-sonnet-4-20250514"
-      },
-    },
     interactions = {
       chat = {
         adapter = {
           -- name = "copilot",
           -- model = "claude-sonnet-4-20250514"
-          adapter = "codex",
-          model = "gpt-5.4",
+          name = "codex",
+          model = "gpt-5.6-luna",
         }
       }
     }
