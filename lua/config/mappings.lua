@@ -37,6 +37,7 @@ map("n", "gd", require("telescope.builtin").lsp_definitions, {desc = "LSP: Go to
 map("n", "gD", require("telescope.builtin").lsp_type_definitions, {desc = "LSP: Go to declaration"})
 map("n", "gi", require("telescope.builtin").lsp_implementations, {desc = "LSP: Go to implementation"})
 map("n", "gr", require("telescope.builtin").lsp_references, {desc = "LSP: Show references"})
+map("n", "ga", vim.diagnostic.open_float, {desc = "LSP: Show diagnostic"})
 map("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "LSP: Code actions"})
 map("n", "<leader>cr", vim.lsp.buf.rename, {desc = "LSP: Rename"})
 map("n", "<leader>ch", vim.lsp.buf.hover, {desc = "LSP: Show signature"})

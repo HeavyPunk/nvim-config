@@ -3,9 +3,9 @@ local M = {}
 vim.lsp.log.set_level("warn")
 
 vim.diagnostic.config({
-  virtual_lines = {
-    current_line = true,
-  },
+  -- virtual_lines = {
+  --   current_line = true,
+  -- },
   severity_sort = true,
   signs = {
     text = {
